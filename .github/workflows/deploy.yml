@@ -49,8 +49,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: www292.conoha.ne.jp
-          # ★要確認: ConoHa WING で作成したFTPアカウント名に修正すること
-          username: yougo@stock-overflow24.com
+          username: yougo@dashboard.stock-overflow24.com
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
