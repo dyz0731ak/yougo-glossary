@@ -48,8 +48,8 @@ jobs:
       - name: Deploy to ConoHa WING via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: www292.conoha.ne.jp
-          username: yougo@dashboard.stock-overflow24.com
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
