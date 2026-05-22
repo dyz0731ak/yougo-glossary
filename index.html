@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>やさしい投資用語辞典 | 株式投資の専門用語をわかりやすく</title>
+    <meta
+      name="description"
+      content="PER・PBR・ROE・ROAなど、株式投資の専門用語を初心者向けにやさしく解説する辞典サイトです。"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="site-title">やさしい投資用語辞典</h1>
+        <p class="site-tagline">
+          PER・PBR・ROE…株式投資の専門用語を、初心者にもわかる言葉で解説します。
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="controls" aria-label="検索と絞り込み">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="用語を検索（例：PER、配当、NISA）"
+            autocomplete="off"
+          />
+        </div>
+        <div
+          class="category-filters"
+          id="category-filters"
+          role="group"
+          aria-label="カテゴリで絞り込み"
+        ></div>
+      </section>
+
+      <section class="pickup" id="pickup" aria-label="よく見られる用語">
+        <p class="pickup-label">よく見られる用語</p>
+        <div class="pickup-chips" id="pickup-chips"></div>
+      </section>
+
+      <p class="result-count" id="result-count"></p>
+
+      <div class="term-list" id="term-list"></div>
+
+      <p class="no-result" id="no-result" hidden>
+        該当する用語が見つかりませんでした。別のキーワードでお試しください。
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        やさしい投資用語辞典 — 投資初心者のための用語解説サイト
+      </p>
+      <p class="disclaimer">
+        ※本サイトは用語解説を目的としたもので、特定の銘柄や投資の推奨を行うものではありません。
+      </p>
+    </footer>
+
+    <script src="terms.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
