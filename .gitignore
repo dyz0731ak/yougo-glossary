@@ -1,2 +1,5 @@
 .claude/
 .DS_Store
+
+# scripts/build.mjs が生成する用語ごとのページ（CIで自動生成するためコミット不要）
+/*/index.html

@@ -35,7 +35,6 @@
 
   let activeCategory = "すべて";
   let query = "";
-  const openIds = new Set();
 
   // ----- カテゴリ絞り込みチップ -----
   CATEGORIES.forEach((cat) => {
@@ -57,10 +56,10 @@
   PICKUP_IDS.forEach((id) => {
     const t = termById[id];
     if (!t) return;
-    const chip = document.createElement("button");
+    const chip = document.createElement("a");
     chip.className = "pickup-chip";
+    chip.href = "/" + id + "/";
     chip.textContent = t.term;
-    chip.addEventListener("click", () => goToTerm(id));
     pickupEl.appendChild(chip);
   });
 
@@ -103,17 +102,11 @@
     return frag;
   }
 
+  // 用語カード = リンク。クリックで /<id>/ へ遷移する。
   function createCard(t, q) {
-    const card = document.createElement("article");
+    const card = document.createElement("a");
     card.className = "term-card";
-    card.id = "term-" + t.id;
-    const isOpen = openIds.has(t.id);
-    if (isOpen) card.classList.add("open");
-
-    // ヘッダー（クリックで開閉）
-    const header = document.createElement("button");
-    header.className = "term-header";
-    header.setAttribute("aria-expanded", String(isOpen));
+    card.href = "/" + t.id + "/";
 
     const main = document.createElement("div");
     main.className = "term-header-main";
@@ -141,85 +134,17 @@
     catBadge.className = "badge badge-category";
     catBadge.textContent = t.category;
     const diffBadge = document.createElement("span");
-    diffBadge.className = "badge badge-difficulty " + DIFF_CLASS[t.difficulty];
+    diffBadge.className = "badge badge-difficulty " + (DIFF_CLASS[t.difficulty] || "");
     diffBadge.textContent = t.difficulty;
     badges.append(catBadge, diffBadge);
-    const toggle = document.createElement("span");
-    toggle.className = "toggle-icon";
-    toggle.textContent = "+";
-    toggle.setAttribute("aria-hidden", "true");
-    side.append(badges, toggle);
+    const arrow = document.createElement("span");
+    arrow.className = "card-arrow";
+    arrow.textContent = "→";
+    arrow.setAttribute("aria-hidden", "true");
+    side.append(badges, arrow);
 
-    header.append(main, side);
-    header.addEventListener("click", () => toggleCard(t.id));
-
-    // 詳細
-    const detail = document.createElement("div");
-    detail.className = "term-detail";
-    detail.hidden = !isOpen;
-
-    if (t.fullName) {
-      const fullName = document.createElement("p");
-      fullName.className = "term-fullname";
-      fullName.textContent = "正式名称：" + t.fullName;
-      detail.appendChild(fullName);
-    }
-
-    const desc = document.createElement("p");
-    desc.className = "term-description";
-    desc.textContent = t.description;
-    detail.appendChild(desc);
-
-    const related = (t.related || []).filter((id) => termById[id]);
-    if (related.length) {
-      const block = document.createElement("div");
-      block.className = "related-block";
-      const label = document.createElement("p");
-      label.className = "related-label";
-      label.textContent = "関連用語";
-      const links = document.createElement("div");
-      links.className = "related-links";
-      related.forEach((id) => {
-        const link = document.createElement("button");
-        link.className = "related-link";
-        link.textContent = termById[id].term;
-        link.addEventListener("click", () => goToTerm(id));
-        links.appendChild(link);
-      });
-      block.append(label, links);
-      detail.appendChild(block);
-    }
-
-    card.append(header, detail);
+    card.append(main, side);
     return card;
-  }
-
-  function toggleCard(id) {
-    if (openIds.has(id)) openIds.delete(id);
-    else openIds.add(id);
-    render();
-  }
-
-  // 関連用語へジャンプ：絞り込みを解除して対象を開き、その位置までスクロール
-  function goToTerm(id) {
-    activeCategory = "すべて";
-    query = "";
-    searchEl.value = "";
-    filtersEl
-      .querySelectorAll(".filter-chip")
-      .forEach((c) => c.classList.toggle("active", c.textContent === "すべて"));
-    openIds.add(id);
-    render();
-
-    const card = document.getElementById("term-" + id);
-    if (!card) return;
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
-    card.classList.add("flash");
-    card.addEventListener(
-      "animationend",
-      () => card.classList.remove("flash"),
-      { once: true }
-    );
   }
 
   function render() {
