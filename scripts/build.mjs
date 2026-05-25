@@ -17,6 +17,13 @@ const ADSENSE_CLIENT = "ca-pub-8504127793204920";
 const termsSrc = readFileSync(join(ROOT, "terms.js"), "utf8");
 const TERMS = new Function(termsSrc + "; return TERMS;")();
 
+// --- affiliates.js を読み込んで selectAffiliates(term) を使えるようにする ---
+const affSrc = readFileSync(join(ROOT, "affiliates.js"), "utf8");
+const { selectAffiliates } = new Function(
+  "module",
+  affSrc + "; return module.exports;"
+)({ exports: {} });
+
 const DIFF_CLASS = { 初級: "beginner", 中級: "intermediate", 上級: "advanced" };
 
 const termById = Object.fromEntries(TERMS.map((t) => [t.id, t]));
@@ -59,6 +66,30 @@ ${related
           </div>
         </section>`
     : "";
+
+  // --- アフィリエイト（証券会社）ブロック ---
+  const aff = selectAffiliates(t);
+  const affiliateHtml = `
+        <aside class="affiliate-block" aria-label="関連する証券会社（PR）">
+          <p class="affiliate-label">
+            <span class="affiliate-tag">PR</span>${esc(t.term)}を活かすための証券会社
+          </p>
+          <p class="affiliate-lead">${esc(aff.lead)}</p>
+          <div class="affiliate-cards">
+${aff.brokers
+  .map(
+    (b) => `            <div class="affiliate-card">
+              <div class="affiliate-card-body">
+                <h3 class="affiliate-name">${esc(b.name)}</h3>
+                <p class="affiliate-strength">${esc(b.strength)}</p>
+              </div>
+              <a href="${esc(b.href)}" class="affiliate-cta" rel="sponsored nofollow noopener" target="_blank" referrerpolicy="no-referrer-when-downgrade">${esc(b.cta)}</a>${b.tracker ? `\n              <img src="${esc(b.tracker)}" width="1" height="1" alt="" style="border:0;position:absolute;left:-9999px" />` : ""}
+            </div>`
+  )
+  .join("\n")}
+          </div>
+          <p class="affiliate-note">※当サイトはアフィリエイトプログラムを利用しています。リンク経由でのお申し込みで運営者に紹介料が支払われる場合があります。掲載内容は予告なく変更される場合があります。</p>
+        </aside>`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -148,6 +179,7 @@ ${JSON.stringify(breadcrumbLd, null, 2)}
           <h2>解説</h2>
           <p class="term-description-large">${esc(t.description)}</p>
         </section>
+${affiliateHtml}
 ${relatedHtml}
 
         <nav class="bottom-nav">
