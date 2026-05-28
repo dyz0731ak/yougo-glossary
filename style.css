@@ -380,6 +380,28 @@ body {
   font-size: 0.78rem;
 }
 
+.sister-site {
+  margin: 0 auto 0.9rem;
+  max-width: 720px;
+  padding: 0.7rem 1rem;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 8px;
+  color: #d6dcec;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.sister-site a {
+  color: #a5b4fc;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sister-site a:hover {
+  text-decoration: underline;
+}
+
 /* ===== Highlight (search match) ===== */
 mark {
   background: #fff2b8;

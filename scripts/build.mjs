@@ -189,6 +189,11 @@ ${relatedHtml}
     </main>
 
     <footer class="site-footer">
+      <p class="sister-site">
+        📊 ${esc(t.term)}の値動きを実際に見るなら、ストップ高・急騰銘柄をリアルタイム監視できる
+        <a href="https://dashboard.stock-overflow24.com/" rel="noopener">『投資の砦』</a>
+        へ。日本株・米国株を一画面で確認できます。
+      </p>
       <p>${esc(SITE_NAME)} — 投資初心者のための用語解説サイト</p>
       <p class="disclaimer">※本サイトは用語解説を目的としたもので、特定の銘柄や投資の推奨を行うものではありません。</p>
     </footer>
