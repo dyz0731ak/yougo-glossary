@@ -1,66 +1,39 @@
+// トップページの検索・カテゴリ絞り込み。
+// 用語カードは build.mjs が index.html に焼き込み済み（SSG）。
+// ここでは既存DOMの表示/非表示の切り替えとハイライトだけを行う。
 (function () {
   "use strict";
 
-  const listEl = document.getElementById("term-list");
   const searchEl = document.getElementById("search-input");
   const filtersEl = document.getElementById("category-filters");
   const countEl = document.getElementById("result-count");
   const noResultEl = document.getElementById("no-result");
+  const pickupEl = document.getElementById("pickup");
+  if (!searchEl || !filtersEl) return;
 
-  const CATEGORIES = [
-    "すべて",
-    "基礎知識",
-    "投資指標",
-    "テクニカル分析",
-    "経済・市場",
-    "投資信託・商品",
-    "取引・注文",
-    "制度・税制",
-    "相場格言",
-  ];
-  const DIFF_CLASS = { 初級: "beginner", 中級: "intermediate", 上級: "advanced" };
-  const PICKUP_IDS = [
-    "per",
-    "haito-rimawari",
-    "nisa",
-    "golden-cross",
-    "nikkei",
-    "index-fund",
-    "fukuri",
-    "tamago-kago",
-  ];
+  const cards = Array.from(document.querySelectorAll(".term-card"));
+  const sections = Array.from(document.querySelectorAll(".cat-section"));
 
-  const termById = {};
-  TERMS.forEach((t) => (termById[t.id] = t));
+  // ハイライト用に元テキストを保持
+  cards.forEach((card) => {
+    const name = card.querySelector(".term-name");
+    const short = card.querySelector(".term-short");
+    if (name) name.dataset.original = name.textContent;
+    if (short) short.dataset.original = short.textContent;
+  });
 
   let activeCategory = "すべて";
   let query = "";
 
   // ----- カテゴリ絞り込みチップ -----
-  CATEGORIES.forEach((cat) => {
-    const chip = document.createElement("button");
-    chip.className = "filter-chip" + (cat === activeCategory ? " active" : "");
-    chip.textContent = cat;
+  filtersEl.querySelectorAll(".filter-chip").forEach((chip) => {
     chip.addEventListener("click", () => {
-      activeCategory = cat;
+      activeCategory = chip.dataset.category || "すべて";
       filtersEl
         .querySelectorAll(".filter-chip")
-        .forEach((c) => c.classList.toggle("active", c.textContent === cat));
+        .forEach((c) => c.classList.toggle("active", c === chip));
       render();
     });
-    filtersEl.appendChild(chip);
-  });
-
-  // ----- よく見られる用語（ピックアップ） -----
-  const pickupEl = document.getElementById("pickup-chips");
-  PICKUP_IDS.forEach((id) => {
-    const t = termById[id];
-    if (!t) return;
-    const chip = document.createElement("a");
-    chip.className = "pickup-chip";
-    chip.href = "/" + id + "/";
-    chip.textContent = t.term;
-    pickupEl.appendChild(chip);
   });
 
   // ----- 検索 -----
@@ -69,97 +42,63 @@
     render();
   });
 
-  function matchesQuery(t, q) {
-    if (!q) return true;
-    const hay = [t.term, t.reading, t.fullName, t.short, t.description]
-      .join(" ")
-      .toLowerCase();
-    return hay.includes(q);
+  function escapeHtml(s) {
+    return s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
-  // 検索語にマッチした部分を <mark> で強調したフラグメントを返す
+  // 検索語にマッチした部分を <mark> で強調したHTMLを返す
   function highlight(text, q) {
-    const frag = document.createDocumentFragment();
-    if (!q) {
-      frag.appendChild(document.createTextNode(text));
-      return frag;
-    }
+    if (!q) return escapeHtml(text);
     const lower = text.toLowerCase();
+    let html = "";
     let from = 0;
     let idx;
     while ((idx = lower.indexOf(q, from)) !== -1) {
-      if (idx > from) {
-        frag.appendChild(document.createTextNode(text.slice(from, idx)));
-      }
-      const mark = document.createElement("mark");
-      mark.textContent = text.slice(idx, idx + q.length);
-      frag.appendChild(mark);
+      html += escapeHtml(text.slice(from, idx));
+      html += "<mark>" + escapeHtml(text.slice(idx, idx + q.length)) + "</mark>";
       from = idx + q.length;
     }
-    if (from < text.length) {
-      frag.appendChild(document.createTextNode(text.slice(from)));
-    }
-    return frag;
+    html += escapeHtml(text.slice(from));
+    return html;
   }
 
-  // 用語カード = リンク。クリックで /<id>/ へ遷移する。
-  function createCard(t, q) {
-    const card = document.createElement("a");
-    card.className = "term-card";
-    card.href = "/" + t.id + "/";
-
-    const main = document.createElement("div");
-    main.className = "term-header-main";
-
-    const titleRow = document.createElement("div");
-    titleRow.className = "term-title-row";
-    const name = document.createElement("span");
-    name.className = "term-name";
-    name.appendChild(highlight(t.term, q));
-    const reading = document.createElement("span");
-    reading.className = "term-reading";
-    reading.textContent = t.reading;
-    titleRow.append(name, reading);
-
-    const short = document.createElement("p");
-    short.className = "term-short";
-    short.textContent = t.short;
-    main.append(titleRow, short);
-
-    const side = document.createElement("div");
-    side.className = "term-side";
-    const badges = document.createElement("div");
-    badges.className = "badges";
-    const catBadge = document.createElement("span");
-    catBadge.className = "badge badge-category";
-    catBadge.textContent = t.category;
-    const diffBadge = document.createElement("span");
-    diffBadge.className = "badge badge-difficulty " + (DIFF_CLASS[t.difficulty] || "");
-    diffBadge.textContent = t.difficulty;
-    badges.append(catBadge, diffBadge);
-    const arrow = document.createElement("span");
-    arrow.className = "card-arrow";
-    arrow.textContent = "→";
-    arrow.setAttribute("aria-hidden", "true");
-    side.append(badges, arrow);
-
-    card.append(main, side);
-    return card;
+  function applyHighlight(el, q) {
+    if (!el) return;
+    const original = el.dataset.original || "";
+    el.innerHTML = highlight(original, q);
   }
 
   function render() {
     const q = query.trim().toLowerCase();
-    listEl.textContent = "";
     let count = 0;
-    TERMS.forEach((t) => {
-      if (activeCategory !== "すべて" && t.category !== activeCategory) return;
-      if (!matchesQuery(t, q)) return;
-      listEl.appendChild(createCard(t, q));
-      count++;
+
+    cards.forEach((card) => {
+      const inCategory =
+        activeCategory === "すべて" || card.dataset.category === activeCategory;
+      const matches = !q || (card.dataset.search || "").includes(q);
+      const visible = inCategory && matches;
+      card.hidden = !visible;
+      if (visible) {
+        count++;
+        applyHighlight(card.querySelector(".term-name"), q);
+        applyHighlight(card.querySelector(".term-short"), q);
+      }
     });
+
+    // カードが1枚も表示されないカテゴリ見出しは隠す
+    sections.forEach((section) => {
+      const hasVisible = section.querySelector(".term-card:not([hidden])") !== null;
+      section.hidden = !hasVisible;
+    });
+
+    // 検索・絞り込み中はピックアップを隠してリストに集中させる
+    if (pickupEl) pickupEl.hidden = !!q || activeCategory !== "すべて";
+
     countEl.textContent = count + "件の用語";
     noResultEl.hidden = count !== 0;
   }
-
-  render();
 })();
