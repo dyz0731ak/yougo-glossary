@@ -215,6 +215,26 @@ const TERM_CONTENT = {
 
   // ===== 投資指標 =====
   per: {
+    figure: {
+      caption:
+        "株価が「1株あたり利益」の何倍かを示す指標。低いほど利益に対して割安、高いほど割高（業種で平均水準は異なる）。",
+      svg: `<svg viewBox="0 0 680 210" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>PERの計算式</title><desc>株価を1株あたり利益（EPS）で割るとPERになることを示す計算式の図</desc>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" text-anchor="middle">
+<rect x="50" y="55" width="150" height="84" rx="10" fill="#f4f6f9" stroke="#e2e6ed"/>
+<text x="125" y="86" font-size="13" fill="#5f6b7c">株価</text>
+<text x="125" y="117" font-size="19" font-weight="700" fill="#1a2b4a">1,500円</text>
+<text x="222" y="107" font-size="26" fill="#5f6b7c">÷</text>
+<rect x="245" y="55" width="185" height="84" rx="10" fill="#f4f6f9" stroke="#e2e6ed"/>
+<text x="337" y="86" font-size="13" fill="#5f6b7c">1株あたり利益（EPS）</text>
+<text x="337" y="117" font-size="19" font-weight="700" fill="#1a2b4a">100円</text>
+<text x="452" y="107" font-size="26" fill="#5f6b7c">＝</text>
+<rect x="475" y="55" width="155" height="84" rx="10" fill="#e8f4f2" stroke="#1f9d8f"/>
+<text x="552" y="86" font-size="13" fill="#167a6f">PER</text>
+<text x="552" y="118" font-size="20" font-weight="700" fill="#167a6f">15倍</text>
+<text x="340" y="178" font-size="13" fill="#5f6b7c">数字が小さいほど割安、大きいほど割高の目安</text>
+</g>
+</svg>`,
+    },
     example:
       "株価1,500円・EPS（1株利益）100円のH社のPERは15倍です。同業のライバルI社が株価3,000円・EPS150円ならPER20倍。利益1円あたりの値段はH社の方が安い、つまり「利益に対して割安」と読めます。ただしI社の利益成長が速いなら、PERが高くても妥当な場合があります。",
     points: [
@@ -235,6 +255,26 @@ const TERM_CONTENT = {
     ],
   },
   pbr: {
+    figure: {
+      caption:
+        "株価が「1株あたり純資産」の何倍かを示す指標。1倍なら株価＝解散価値、1倍割れは割安の目安とされる。",
+      svg: `<svg viewBox="0 0 680 210" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>PBRの計算式</title><desc>株価を1株あたり純資産（BPS）で割るとPBRになることを示す計算式の図</desc>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" text-anchor="middle">
+<rect x="50" y="55" width="150" height="84" rx="10" fill="#f4f6f9" stroke="#e2e6ed"/>
+<text x="125" y="86" font-size="13" fill="#5f6b7c">株価</text>
+<text x="125" y="117" font-size="19" font-weight="700" fill="#1a2b4a">1,200円</text>
+<text x="222" y="107" font-size="26" fill="#5f6b7c">÷</text>
+<rect x="245" y="55" width="185" height="84" rx="10" fill="#f4f6f9" stroke="#e2e6ed"/>
+<text x="337" y="86" font-size="13" fill="#5f6b7c">1株あたり純資産（BPS）</text>
+<text x="337" y="117" font-size="19" font-weight="700" fill="#1a2b4a">1,000円</text>
+<text x="452" y="107" font-size="26" fill="#5f6b7c">＝</text>
+<rect x="475" y="55" width="155" height="84" rx="10" fill="#e8f4f2" stroke="#1f9d8f"/>
+<text x="552" y="86" font-size="13" fill="#167a6f">PBR</text>
+<text x="552" y="118" font-size="20" font-weight="700" fill="#167a6f">1.2倍</text>
+<text x="340" y="178" font-size="13" fill="#5f6b7c">1倍を下回ると割安とみなされることがある</text>
+</g>
+</svg>`,
+    },
     example:
       "1株あたり純資産（BPS）が2,000円のJ社の株価が1,600円なら、PBRは0.8倍。「会社を解散して資産を分けたら2,000円もらえる計算なのに、株価は1,600円」という状態です。東証はPBR1倍割れ企業に改善を要請しており、低PBR銘柄が見直されるきっかけになりました。",
     points: [
@@ -331,6 +371,27 @@ const TERM_CONTENT = {
     ],
   },
   "haito-rimawari": {
+    figure: {
+      caption:
+        "株価に対し1年で受け取れる配当の割合。高いほど効率的だが、株価下落で見かけ上高くなっている場合もある。",
+      svg: `<svg viewBox="0 0 680 210" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>配当利回りの計算式</title><desc>年間配当金を株価で割り100を掛けると配当利回り（％）になることを示す計算式の図</desc>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" text-anchor="middle">
+<rect x="40" y="55" width="150" height="84" rx="10" fill="#f4f6f9" stroke="#e2e6ed"/>
+<text x="115" y="86" font-size="13" fill="#5f6b7c">1株の年間配当</text>
+<text x="115" y="117" font-size="19" font-weight="700" fill="#1a2b4a">60円</text>
+<text x="210" y="107" font-size="24" fill="#5f6b7c">÷</text>
+<rect x="232" y="55" width="150" height="84" rx="10" fill="#f4f6f9" stroke="#e2e6ed"/>
+<text x="307" y="86" font-size="13" fill="#5f6b7c">株価</text>
+<text x="307" y="117" font-size="19" font-weight="700" fill="#1a2b4a">2,000円</text>
+<text x="408" y="103" font-size="17" fill="#5f6b7c">×100</text>
+<text x="455" y="107" font-size="24" fill="#5f6b7c">＝</text>
+<rect x="478" y="55" width="155" height="84" rx="10" fill="#e8f4f2" stroke="#1f9d8f"/>
+<text x="555" y="86" font-size="13" fill="#167a6f">配当利回り</text>
+<text x="555" y="118" font-size="20" font-weight="700" fill="#167a6f">3％</text>
+<text x="340" y="178" font-size="13" fill="#5f6b7c">高いほど配当の収益効率がよい目安</text>
+</g>
+</svg>`,
+    },
     example:
       "株価2,500円・年間配当100円のP社の配当利回りは4%。100万円分買えば年4万円（税引前）の配当です。同じ100円配当でも株価が2,000円に下がれば利回りは5%に上がります。「利回り上昇」は減配懸念で株価が下がった結果のこともあるため、数字の背景を見ることが大切です。",
     points: [
@@ -581,6 +642,25 @@ const TERM_CONTENT = {
     ],
   },
   dekidaka: {
+    figure: {
+      caption:
+        "その期間に売買が成立した株数。多いほど注目度が高い。出来高を伴う値動きは信頼性が高いとされる。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>出来高</title><desc>上に株価の折れ線、下に出来高の棒グラフを並べた一般的なチャートの図</desc>
+<polyline fill="none" stroke="#2a4068" stroke-width="3" stroke-linejoin="round" points="60,130 120,105 180,125 240,85 300,115 360,78 420,108 480,68 540,98 600,72"/>
+<line x1="50" y1="165" x2="635" y2="165" stroke="#e2e6ed" stroke-width="1"/>
+<line x1="50" y1="255" x2="635" y2="255" stroke="#cdd4de" stroke-width="1"/>
+<g fill="#1f9d8f" opacity="0.5">
+<rect x="47" y="225" width="26" height="30"/><rect x="107" y="200" width="26" height="55"/><rect x="167" y="230" width="26" height="25"/><rect x="227" y="183" width="26" height="72"/><rect x="287" y="220" width="26" height="35"/><rect x="347" y="180" width="26" height="75"/><rect x="407" y="215" width="26" height="40"/><rect x="527" y="210" width="26" height="45"/><rect x="587" y="195" width="26" height="60"/>
+</g>
+<rect x="467" y="175" width="26" height="80" fill="#167a6f" opacity="0.85"/>
+<line x1="480" y1="172" x2="480" y2="150" stroke="#c2c9d4" stroke-width="1"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13">
+<text x="60" y="48" font-weight="700" fill="#2a4068">株価</text>
+<text x="60" y="190" font-weight="700" fill="#167a6f">出来高</text>
+<text x="493" y="146" font-size="12" font-weight="700" fill="#167a6f">出来高急増＝注目</text>
+</g>
+</svg>`,
+    },
     example:
       "普段1日10万株しか取引されないW社株が、好決算の翌日に100万株の出来高を伴って急騰したとします。出来高10倍は「多くの投資家が注目し実際に売買した」証拠で、上昇の信頼度が高いと判断できます。逆に出来高の少ない上昇は、わずかな売りで崩れやすい「閑散高」です。",
     points: [
@@ -640,6 +720,27 @@ const TERM_CONTENT = {
     ],
   },
   "junbari-gyakubari": {
+    figure: {
+      caption:
+        "相場の流れに沿って売買するのが順張り、流れに逆らうのが逆張り。優劣ではなく投資スタイルの違い。",
+      svg: `<svg viewBox="0 0 680 290" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>順張りと逆張り</title><desc>上昇の流れに乗って買う順張りと、下げで買い上げで売る逆張りを2つの小チャートで対比した図</desc>
+<line x1="345" y1="45" x2="345" y2="220" stroke="#e2e6ed" stroke-width="1"/>
+<polyline fill="none" stroke="#2f9e44" stroke-width="3" stroke-linejoin="round" points="55,205 110,175 165,190 220,145 275,160 325,105"/>
+<circle cx="220" cy="145" r="8" fill="#ffffff" stroke="#2f9e44" stroke-width="3"/>
+<path d="M220 138 l-5 11 l10 0 z" fill="#2f9e44"/>
+<polyline fill="none" stroke="#5f6b7c" stroke-width="3" stroke-linejoin="round" points="375,120 425,165 475,205 525,160 575,110 620,150"/>
+<circle cx="475" cy="205" r="8" fill="#ffffff" stroke="#2f9e44" stroke-width="3"/>
+<circle cx="575" cy="110" r="8" fill="#ffffff" stroke="#d24a4a" stroke-width="3"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" text-anchor="middle">
+<text x="200" y="248" font-size="15" font-weight="700" fill="#2f9e44">順張り</text>
+<text x="200" y="270" font-size="12" fill="#5f6b7c">流れに乗って買う</text>
+<text x="497" y="248" font-size="15" font-weight="700" fill="#2a4068">逆張り</text>
+<text x="497" y="270" font-size="12" fill="#5f6b7c">下げで買い・上げで売り</text>
+<text x="455" y="225" font-size="12" font-weight="700" fill="#2f9e44">買</text>
+<text x="593" y="106" font-size="12" font-weight="700" fill="#d24a4a">売</text>
+</g>
+</svg>`,
+    },
     example:
       "上昇中のY社株を「もっと上がるはず」と買うのが順張り、急落したZ社株を「下がりすぎだ」と買うのが逆張りです。順張りは流れに乗るため初心者向きですが高値づかみのリスクが、逆張りは安く買える反面「落ちるナイフ」をつかむリスクがあります。",
     points: [
@@ -659,6 +760,23 @@ const TERM_CONTENT = {
     ],
   },
   "oshime-gai": {
+    figure: {
+      caption:
+        "上昇トレンド中の一時的な下げ（押し目）を狙って買う順張り。移動平均線などが目安。押し目に見えて転換のこともある。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>押し目買い</title><desc>上昇トレンドの中で一時的に下げて移動平均線に近づいた押し目で買う様子を示した図</desc>
+<line x1="60" y1="255" x2="635" y2="255" stroke="#cdd4de" stroke-width="1"/>
+<polyline fill="none" stroke="#1f9d8f" stroke-width="2.5" stroke-linejoin="round" points="60,235 180,205 300,175 420,145 540,118 630,100"/>
+<polyline fill="none" stroke="#2a4068" stroke-width="3" stroke-linejoin="round" points="70,225 120,178 175,200 235,148 300,178 360,120 430,150 500,98 560,122 630,72"/>
+<circle cx="175" cy="200" r="8" fill="#ffffff" stroke="#167a6f" stroke-width="3"/>
+<circle cx="300" cy="178" r="8" fill="#ffffff" stroke="#167a6f" stroke-width="3"/>
+<circle cx="430" cy="150" r="8" fill="#ffffff" stroke="#167a6f" stroke-width="3"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13">
+<line x1="70" y1="40" x2="98" y2="40" stroke="#2a4068" stroke-width="3"/><text x="104" y="45" fill="#232b38">株価</text>
+<line x1="180" y1="40" x2="208" y2="40" stroke="#1f9d8f" stroke-width="3"/><text x="214" y="45" fill="#232b38">移動平均線</text>
+<circle cx="350" cy="40" r="7" fill="#ffffff" stroke="#167a6f" stroke-width="3"/><text x="364" y="45" fill="#167a6f" font-weight="700">押し目買いの好機</text>
+</g>
+</svg>`,
+    },
     example:
       "上昇トレンドのAA社株が、利益確定売りで25日移動平均線付近まで一時的に下がりました。この「押し目」を狙って買うのが押し目買いです。上昇の流れは維持したまま数%安く買えるため、順張りの中でも王道のエントリー手法とされます。「押し目待ちに押し目なし」という格言もあるほど、皆が狙っています。",
     points: [
@@ -756,6 +874,27 @@ const TERM_CONTENT = {
     ],
   },
   macd: {
+    figure: {
+      caption:
+        "2本のEMAの差（MACD線）とその平均（シグナル線）。MACDがシグナルを上抜けで買い、下抜けで売りの目安。差を棒（ヒストグラム）で表す。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>MACD</title><desc>MACD線・シグナル線・ゼロ線まわりのヒストグラムで構成されるMACD指標の図</desc>
+<line x1="60" y1="170" x2="635" y2="170" stroke="#aeb6c2" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="50" y="174" text-anchor="end" font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="12" fill="#9aa4b2">0</text>
+<g fill="#2f9e44" opacity="0.55">
+<rect x="101" y="164" width="18" height="6"/><rect x="139" y="148" width="18" height="22"/><rect x="177" y="136" width="18" height="34"/><rect x="215" y="140" width="18" height="30"/><rect x="253" y="158" width="18" height="12"/><rect x="481" y="160" width="18" height="10"/><rect x="519" y="146" width="18" height="24"/><rect x="557" y="152" width="18" height="18"/><rect x="595" y="164" width="18" height="6"/>
+</g>
+<g fill="#d24a4a" opacity="0.55">
+<rect x="66" y="170" width="18" height="8"/><rect x="291" y="170" width="18" height="4"/><rect x="329" y="170" width="18" height="22"/><rect x="367" y="170" width="18" height="30"/><rect x="405" y="170" width="18" height="18"/><rect x="443" y="170" width="18" height="6"/>
+</g>
+<polyline fill="none" stroke="#2a4068" stroke-width="3" stroke-linejoin="round" points="60,190 130,150 200,118 270,135 340,182 410,200 480,160 550,125 630,148"/>
+<polyline fill="none" stroke="#e8893a" stroke-width="2.5" stroke-linejoin="round" points="60,195 130,178 200,148 270,130 340,160 410,192 480,188 550,152 630,140"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13">
+<line x1="70" y1="42" x2="98" y2="42" stroke="#2a4068" stroke-width="3"/><text x="104" y="47" fill="#232b38">MACD線</text>
+<line x1="200" y1="42" x2="228" y2="42" stroke="#e8893a" stroke-width="3"/><text x="234" y="47" fill="#232b38">シグナル線</text>
+<rect x="330" y="36" width="16" height="11" fill="#2f9e44" opacity="0.55"/><text x="352" y="47" fill="#232b38">ヒストグラム（差）</text>
+</g>
+</svg>`,
+    },
     example:
       "MACDは2本の指数移動平均線の差から、トレンドの方向と勢いを読む指標です。MACD線がシグナル線を下から上に抜けば買いシグナル、上から下なら売りシグナル。移動平均線より反応が早く、ゴールデンクロスの「先回り」として使うトレーダーもいます。",
     points: [
@@ -775,6 +914,22 @@ const TERM_CONTENT = {
     ],
   },
   bollinger: {
+    figure: {
+      caption:
+        "移動平均線の上下に値動きの幅（σ）の帯を描く。株価は約95%が±2σ内に収まる。バンド沿いに動く「バンドウォーク」に注意。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>ボリンジャーバンド</title><desc>中央の移動平均線と上下の±2σバンド、その帯の中で上下する株価を示した図</desc>
+<polygon fill="#e8f4f2" points="60,118 200,106 340,96 480,98 630,98 630,202 480,202 340,204 200,214 60,222"/>
+<polyline fill="none" stroke="#2a4068" stroke-width="1.5" stroke-dasharray="6 4" points="60,118 200,106 340,96 480,98 630,98"/>
+<polyline fill="none" stroke="#2a4068" stroke-width="1.5" stroke-dasharray="6 4" points="60,222 200,214 340,204 480,202 630,202"/>
+<polyline fill="none" stroke="#1f9d8f" stroke-width="2.5" points="60,170 200,160 340,150 480,150 630,150"/>
+<polyline fill="none" stroke="#8a93a3" stroke-width="2.5" stroke-linejoin="round" points="60,175 110,135 160,205 210,150 260,112 310,165 360,208 410,140 460,102 510,170 560,210 610,150"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13">
+<text x="634" y="92" text-anchor="end" font-weight="700" fill="#d24a4a">+2σ 買われすぎ</text>
+<text x="634" y="222" text-anchor="end" font-weight="700" fill="#2f9e44">−2σ 売られすぎ</text>
+<text x="64" y="163" fill="#167a6f">中央線（移動平均）</text>
+</g>
+</svg>`,
+    },
     example:
       "ボリンジャーバンドは移動平均線の上下に、値動きのばらつき（標準偏差σ）の帯を描いた指標です。統計上、株価は±2σの帯の中に約95%の確率で収まるとされ、+2σ超えは買われすぎ、−2σ割れは売られすぎの目安。帯の幅が急に広がる「エクスパンション」は大きなトレンドの始まりを示します。",
     points: [
@@ -1140,6 +1295,29 @@ const TERM_CONTENT = {
     ],
   },
   "dollar-cost": {
+    figure: {
+      caption:
+        "毎月「同じ金額」で買い続ける手法。価格が安い時は多く、高い時は少なく買うので、平均購入単価がならされる。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>ドルコスト平均法</title><desc>変動する価格に対し毎回同じ金額で買うと、安い時に多く高い時に少なく買えることを示す図。丸の大きさが購入株数。</desc>
+<line x1="55" y1="250" x2="635" y2="250" stroke="#cdd4de" stroke-width="1"/>
+<polyline fill="none" stroke="#aeb6c2" stroke-width="2.5" stroke-linejoin="round" points="70,110 140,150 210,205 280,175 350,225 420,140 490,100 560,150 620,115"/>
+<circle cx="70" cy="110" r="7" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="140" cy="150" r="10" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="210" cy="205" r="15" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="280" cy="175" r="12" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="350" cy="225" r="16" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="420" cy="140" r="10" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="490" cy="100" r="6.5" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="560" cy="150" r="10" fill="#1f9d8f" opacity="0.85"/>
+<circle cx="620" cy="115" r="7" fill="#1f9d8f" opacity="0.85"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13" font-weight="700">
+<text x="350" y="278" text-anchor="middle" fill="#167a6f">安い→たくさん買える</text>
+<text x="490" y="80" text-anchor="middle" fill="#5f6b7c">高い→少しだけ</text>
+</g>
+<circle cx="76" cy="40" r="6" fill="#1f9d8f" opacity="0.85"/>
+<text x="88" y="44" font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13" fill="#5f6b7c">＝毎月の購入（金額は毎回同じ）</text>
+</svg>`,
+    },
     example:
       "毎月1万円ずつ投信を買うと、基準価額が1万円の月は1口、5,000円に下がった月は2口買えます。価格が安い月ほど自動的に多く買うため、平均取得単価が平準化されます。これがドルコスト平均法で、つみたてNISAの毎月積立はまさにこの方法です。",
     points: [
@@ -1159,6 +1337,26 @@ const TERM_CONTENT = {
     ],
   },
   bunsan: {
+    figure: {
+      caption:
+        "値動きの異なる複数の資産に分けて持つ考え方。ひとつが下がっても他が補い、資産全体の振れをやわらげる。",
+      svg: `<svg viewBox="0 0 680 260" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>集中投資と分散投資</title><desc>1つの資産に集中した場合と、複数の資産に分散した場合をドーナツ図で比較した図</desc>
+<circle cx="200" cy="118" r="58" fill="none" stroke="#d24a4a" stroke-width="24"/>
+<circle cx="480" cy="118" r="58" fill="none" stroke="#1f9d8f" stroke-width="24" stroke-dasharray="91.1 273.3" transform="rotate(-90 480 118)"/>
+<circle cx="480" cy="118" r="58" fill="none" stroke="#2a4068" stroke-width="24" stroke-dasharray="91.1 273.3" stroke-dashoffset="-91.1" transform="rotate(-90 480 118)"/>
+<circle cx="480" cy="118" r="58" fill="none" stroke="#e8893a" stroke-width="24" stroke-dasharray="91.1 273.3" stroke-dashoffset="-182.2" transform="rotate(-90 480 118)"/>
+<circle cx="480" cy="118" r="58" fill="none" stroke="#2f9e44" stroke-width="24" stroke-dasharray="91.1 273.3" stroke-dashoffset="-273.3" transform="rotate(-90 480 118)"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" text-anchor="middle">
+<text x="200" y="114" font-size="13" fill="#5f6b7c">1資産</text>
+<text x="200" y="133" font-size="13" fill="#5f6b7c">に集中</text>
+<text x="480" y="123" font-size="13" fill="#5f6b7c">複数に配分</text>
+<text x="200" y="212" font-size="15" font-weight="700" fill="#d24a4a">集中投資</text>
+<text x="200" y="234" font-size="12" fill="#5f6b7c">1つが下がると大ダメージ</text>
+<text x="480" y="212" font-size="15" font-weight="700" fill="#167a6f">分散投資</text>
+<text x="480" y="234" font-size="12" fill="#5f6b7c">1つが下がっても他が補う</text>
+</g>
+</svg>`,
+    },
     example:
       "資産を「日本株25%・米国株25%・債券25%・現金25%」のように分けておけば、日本株が暴落しても資産全体のダメージは限定されます。銘柄の分散（1社→数百社）、資産の分散（株・債券・不動産）、時間の分散（積立）、通貨の分散（円・ドル）—この組み合わせが分散投資です。",
     points: [
@@ -1178,6 +1376,23 @@ const TERM_CONTENT = {
     ],
   },
   fukuri: {
+    figure: {
+      caption:
+        "利益を元本に組み入れ、利益が利益を生む仕組み。時間が経つほど単利との差が雪だるま式に開く。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>複利と単利の差</title><desc>時間とともに複利は曲線的に、単利は直線的に増え、差が開いていく様子の図</desc>
+<line x1="60" y1="255" x2="635" y2="255" stroke="#cdd4de" stroke-width="1"/>
+<line x1="60" y1="45" x2="60" y2="255" stroke="#cdd4de" stroke-width="1"/>
+<polyline fill="none" stroke="#aeb6c2" stroke-width="3" points="60,235 630,150"/>
+<polyline fill="none" stroke="#1f9d8f" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" points="60,235 140,228 220,216 300,198 380,170 460,135 540,95 630,58"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif">
+<text x="588" y="52" text-anchor="end" font-size="15" font-weight="700" fill="#167a6f">複利</text>
+<text x="600" y="143" text-anchor="end" font-size="15" font-weight="700" fill="#5f6b7c">単利</text>
+<text x="72" y="40" font-size="12" fill="#9aa4b2">資産</text>
+<text x="632" y="276" text-anchor="end" font-size="12" fill="#9aa4b2">時間 →</text>
+<text x="320" y="118" text-anchor="middle" font-size="13" fill="#167a6f">利益が利益を生み、雪だるま式に増える</text>
+</g>
+</svg>`,
+    },
     example:
       "100万円を年利5%で運用すると、単利なら20年で200万円。ところが利益を再投資する複利なら約265万円になります。30年なら単利250万円に対し複利は約432万円。時間が長いほど雪だるま式に差が開きます。アインシュタインが「人類最大の発明」と呼んだとされる仕組みです。",
     points: [
@@ -1409,6 +1624,23 @@ const TERM_CONTENT = {
     ],
   },
   nanpin: {
+    figure: {
+      caption:
+        "値下がり後に買い増し、平均取得単価を下げる手法。例では1,000円と800円で平均900円。下落が続くと損失も投入額も膨らむ。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>ナンピン買い</title><desc>株価が下がったところで買い増し、平均取得単価を下げる様子を示す図</desc>
+<line x1="60" y1="255" x2="635" y2="255" stroke="#cdd4de" stroke-width="1"/>
+<line x1="60" y1="150" x2="630" y2="150" stroke="#e8893a" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polyline fill="none" stroke="#2a4068" stroke-width="3" stroke-linejoin="round" points="80,100 200,150 330,200 450,180 580,150 630,150"/>
+<circle cx="80" cy="100" r="7" fill="#ffffff" stroke="#d24a4a" stroke-width="3"/>
+<circle cx="330" cy="200" r="7" fill="#ffffff" stroke="#d24a4a" stroke-width="3"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13">
+<text x="92" y="92" fill="#d24a4a" font-weight="700">①1,000円で買い</text>
+<text x="342" y="223" fill="#d24a4a" font-weight="700">②800円で買い増し</text>
+<text x="628" y="143" text-anchor="end" fill="#c97a1f" font-weight="700">平均取得単価 900円</text>
+<text x="350" y="280" text-anchor="middle" fill="#5f6b7c">900円まで戻れば損益トントン（下落が続けば損失は拡大）</text>
+</g>
+</svg>`,
+    },
     example:
       "1,000円で100株買ったHH社株が800円に下落。さらに100株買い増せば平均取得単価は900円に下がり、900円まで戻れば損益トントンになります。これがナンピン買いです。ただし下落が続けば損失は倍速で膨らみます。「下手なナンピン、スカンピン」という戒めの格言もあります。",
     points: [
@@ -1567,6 +1799,39 @@ const TERM_CONTENT = {
 
   // ===== 相場格言 =====
   "tamago-kago": {
+    figure: {
+      caption:
+        "分散投資の大切さを説く格言。1つのカゴに全部入れると落とした時に全滅、分けておけば被害は一部で済む。",
+      svg: `<svg viewBox="0 0 680 280" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>卵は一つのカゴに盛るな</title><desc>1つのカゴに全部の卵を入れた場合と、複数のカゴに分けて入れた場合を対比した図</desc>
+<line x1="298" y1="40" x2="298" y2="205" stroke="#e2e6ed" stroke-width="1"/>
+<g stroke="#dcc99f" stroke-width="1">
+<ellipse cx="145" cy="146" rx="9" ry="12" fill="#f4ecd7"/>
+<ellipse cx="175" cy="138" rx="9" ry="12" fill="#f4ecd7"/>
+<ellipse cx="205" cy="146" rx="9" ry="12" fill="#f4ecd7"/>
+<ellipse cx="158" cy="158" rx="9" ry="12" fill="#f4ecd7"/>
+<ellipse cx="192" cy="158" rx="9" ry="12" fill="#f4ecd7"/>
+</g>
+<path d="M95 162 L103 210 Q180 222 257 210 L265 162 Z" fill="#c8893f"/>
+<ellipse cx="180" cy="162" rx="85" ry="9" fill="#b3762f"/>
+<g stroke="#a86a28" stroke-width="1.5"><line x1="140" y1="166" x2="146" y2="208"/><line x1="180" y1="167" x2="180" y2="211"/><line x1="220" y1="166" x2="214" y2="208"/></g>
+<g stroke="#dcc99f" stroke-width="1">
+<ellipse cx="370" cy="156" rx="8" ry="11" fill="#f4ecd7"/>
+<ellipse cx="392" cy="156" rx="8" ry="11" fill="#f4ecd7"/>
+<ellipse cx="470" cy="156" rx="8" ry="11" fill="#f4ecd7"/>
+<ellipse cx="492" cy="156" rx="8" ry="11" fill="#f4ecd7"/>
+<ellipse cx="570" cy="156" rx="8" ry="11" fill="#f4ecd7"/>
+<ellipse cx="592" cy="156" rx="8" ry="11" fill="#f4ecd7"/>
+</g>
+<g fill="#c8893f"><path d="M338 166 L344 205 Q381 214 418 205 L424 166 Z"/><path d="M438 166 L444 205 Q481 214 518 205 L524 166 Z"/><path d="M538 166 L544 205 Q581 214 618 205 L624 166 Z"/></g>
+<g fill="#b3762f"><ellipse cx="381" cy="166" rx="43" ry="7"/><ellipse cx="481" cy="166" rx="43" ry="7"/><ellipse cx="581" cy="166" rx="43" ry="7"/></g>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" text-anchor="middle">
+<text x="180" y="240" font-size="15" font-weight="700" fill="#d24a4a">1つのカゴに全部</text>
+<text x="180" y="261" font-size="12" fill="#5f6b7c">落とすと全部割れる</text>
+<text x="481" y="240" font-size="15" font-weight="700" fill="#167a6f">複数のカゴに分ける</text>
+<text x="481" y="261" font-size="12" fill="#5f6b7c">1つ落としても被害は一部</text>
+</g>
+</svg>`,
+    },
     example:
       "全資産300万円を1銘柄に集中させ、その会社が不祥事で株価半減——カゴを落として卵が全部割れた状態です。300万円を「日本株・米国株・債券・現金」に分けていれば、1つの暴落も資産全体への打撃は限定的。分散投資の大切さを説く、世界で最も有名な投資格言です。",
     points: [
