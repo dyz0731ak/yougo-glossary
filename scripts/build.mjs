@@ -174,6 +174,15 @@ ${tocItems.map(([id, label]) => `            <li><a href="#${id}">${esc(label)}<
           </ol>
         </nav>`;
 
+  // --- 解説図（SVG） ---
+  const figureHtml = c.figure
+    ? `
+        <figure class="term-figure">
+          ${c.figure.svg}
+${c.figure.caption ? `          <figcaption>${esc(c.figure.caption)}</figcaption>` : ""}
+        </figure>`
+    : "";
+
   // --- 具体例 ---
   const exampleHtml = c.example
     ? `
@@ -323,6 +332,7 @@ ${tocHtml}
           <h2>解説</h2>
           <p class="term-description-large">${esc(t.description)}</p>
         </section>
+${figureHtml}
 ${exampleHtml}
 ${pointsHtml}
 ${affiliateHtml}

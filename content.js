@@ -413,6 +413,46 @@ const TERM_CONTENT = {
 
   // ===== テクニカル分析 =====
   rosokuashi: {
+    figure: {
+      caption:
+        "1本のローソク足は「始値・終値・高値・安値」の4つの価格を表す。実体が陽線（赤）なら終値＞始値で買い優勢、陰線（紺）なら終値＜始値で売り優勢。",
+      svg: `<svg viewBox="0 0 680 440" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>ローソク足の構造</title><desc>陽線と陰線を並べ、高値・安値・始値・終値・実体・上ヒゲ・下ヒゲの位置を示した図</desc>
+<line x1="200" y1="90" x2="200" y2="340" stroke="#d24a4a" stroke-width="3"/>
+<rect x="178" y="150" width="44" height="140" fill="#d24a4a" rx="2"/>
+<line x1="460" y1="90" x2="460" y2="340" stroke="#2a4068" stroke-width="3"/>
+<rect x="438" y="150" width="44" height="140" fill="#2a4068" rx="2"/>
+<g stroke="#c2c9d4" stroke-width="1">
+<line x1="138" y1="118" x2="200" y2="118"/>
+<line x1="138" y1="224" x2="178" y2="224"/>
+<line x1="138" y1="318" x2="200" y2="318"/>
+<line x1="200" y1="90" x2="262" y2="90"/>
+<line x1="222" y1="150" x2="262" y2="150"/>
+<line x1="222" y1="290" x2="262" y2="290"/>
+<line x1="200" y1="340" x2="262" y2="340"/>
+<line x1="482" y1="150" x2="522" y2="150"/>
+<line x1="482" y1="290" x2="522" y2="290"/>
+</g>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="15" fill="#232b38">
+<text x="132" y="123" text-anchor="end">上ヒゲ</text>
+<text x="132" y="229" text-anchor="end" font-weight="700">実体</text>
+<text x="132" y="323" text-anchor="end">下ヒゲ</text>
+<text x="268" y="95">高値</text>
+<text x="268" y="155">終値</text>
+<text x="268" y="295">始値</text>
+<text x="268" y="345">安値</text>
+<text x="528" y="155">始値</text>
+<text x="528" y="295">終値</text>
+</g>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="16" font-weight="700" text-anchor="middle">
+<text x="200" y="392" fill="#d24a4a">陽線（終値 &gt; 始値）</text>
+<text x="460" y="392" fill="#2a4068">陰線（終値 &lt; 始値）</text>
+</g>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13" fill="#5f6b7c" text-anchor="middle">
+<text x="200" y="414">上昇＝買い優勢</text>
+<text x="460" y="414">下落＝売り優勢</text>
+</g>
+</svg>`,
+    },
     example:
       "始値1,000円→高値1,080円→安値990円→終値1,060円の1日は、実体が白い（陽線）ローソク足になります。長い下ヒゲは「一度売られたが買い戻された」強さのサイン、長い上ヒゲは「上値で売りが出た」弱さのサインと読みます。1本で4つの価格情報を表せる、日本発祥のチャート表現です。",
     points: [
@@ -432,6 +472,22 @@ const TERM_CONTENT = {
     ],
   },
   "idou-heikin": {
+    figure: {
+      caption:
+        "日々の細かな値動きをならし、相場の大きな方向（トレンド）を見やすくする線。期間の違う線を組み合わせて売買サインも読む。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>移動平均線</title><desc>ギザギザの日々の株価と、それをならした滑らかな移動平均線を重ねた図</desc>
+<line x1="50" y1="272" x2="645" y2="272" stroke="#cdd4de" stroke-width="1"/>
+<polyline fill="none" stroke="#aeb6c2" stroke-width="2" points="60,210 90,175 120,215 150,150 180,185 210,120 240,165 270,110 300,150 330,95 360,140 390,105 420,160 450,120 480,165 510,125 540,100 570,145 600,110 630,135"/>
+<polyline fill="none" stroke="#1f9d8f" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" points="60,215 110,198 160,178 210,162 260,148 310,134 360,124 410,122 460,126 510,126 560,121 630,122"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="14">
+<line x1="70" y1="40" x2="98" y2="40" stroke="#aeb6c2" stroke-width="2"/>
+<text x="104" y="45" fill="#5f6b7c">日々の株価</text>
+<line x1="240" y1="40" x2="268" y2="40" stroke="#1f9d8f" stroke-width="3.5"/>
+<text x="274" y="45" fill="#232b38">移動平均線（例：25日）</text>
+</g>
+<text x="632" y="291" text-anchor="end" font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="12" fill="#9aa4b2">時間 →</text>
+</svg>`,
+    },
     example:
       "25日移動平均線は「直近25営業日の終値の平均」を毎日つなげた線です。株価が25日線の上にあれば短期上昇トレンド、下なら下落トレンドの目安。多くの投資家が「75日線まで下がったら買い」のように意識するため、支持線・抵抗線として機能しやすくなります。",
     points: [
@@ -451,6 +507,24 @@ const TERM_CONTENT = {
     ],
   },
   "golden-cross": {
+    figure: {
+      caption:
+        "短期線が長期線を下から上へ抜ける形。上昇転換の「買いサイン」の目安（必ず上がるわけではない）。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>ゴールデンクロス</title><desc>短期移動平均線が長期移動平均線を下から上へ抜ける様子</desc>
+<line x1="50" y1="262" x2="645" y2="262" stroke="#cdd4de" stroke-width="1"/>
+<polyline fill="none" stroke="#2a4068" stroke-width="3" stroke-linejoin="round" points="60,205 200,192 340,173 480,150 630,126"/>
+<polyline fill="none" stroke="#1f9d8f" stroke-width="3" stroke-linejoin="round" points="60,238 160,214 260,190 345,172 430,150 520,120 630,96"/>
+<line x1="345" y1="165" x2="345" y2="84" stroke="#c2c9d4" stroke-width="1"/>
+<circle cx="345" cy="172" r="7" fill="#ffffff" stroke="#1f9d8f" stroke-width="3"/>
+<text x="345" y="74" text-anchor="middle" font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="15" font-weight="700" fill="#167a6f">ゴールデンクロス（買いサイン）</text>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13">
+<line x1="70" y1="285" x2="98" y2="285" stroke="#1f9d8f" stroke-width="3"/>
+<text x="104" y="290" fill="#232b38">短期線</text>
+<line x1="190" y1="285" x2="218" y2="285" stroke="#2a4068" stroke-width="3"/>
+<text x="224" y="290" fill="#232b38">長期線</text>
+</g>
+</svg>`,
+    },
     example:
       "下落が続いていたU社株で、25日移動平均線が75日移動平均線を下から上に突き抜けました。これがゴールデンクロスで、「短期の勢いが中期の流れを上回った＝上昇トレンド入りの可能性」と読まれ、買いシグナルとして広く知られています。日経平均などの指数でも意識されます。",
     points: [
@@ -470,6 +544,24 @@ const TERM_CONTENT = {
     ],
   },
   "dead-cross": {
+    figure: {
+      caption:
+        "短期線が長期線を上から下へ抜ける形。下降転換の「売り・警戒サイン」の目安。ゴールデンクロスと対になる。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>デッドクロス</title><desc>短期移動平均線が長期移動平均線を上から下へ抜ける様子</desc>
+<line x1="50" y1="262" x2="645" y2="262" stroke="#cdd4de" stroke-width="1"/>
+<polyline fill="none" stroke="#2a4068" stroke-width="3" stroke-linejoin="round" points="60,130 200,150 340,172 480,196 630,216"/>
+<polyline fill="none" stroke="#1f9d8f" stroke-width="3" stroke-linejoin="round" points="60,96 160,120 260,150 345,173 430,196 520,224 630,250"/>
+<line x1="345" y1="166" x2="345" y2="84" stroke="#c2c9d4" stroke-width="1"/>
+<circle cx="345" cy="172" r="7" fill="#ffffff" stroke="#d24a4a" stroke-width="3"/>
+<text x="345" y="74" text-anchor="middle" font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="15" font-weight="700" fill="#d24a4a">デッドクロス（売りサイン）</text>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13">
+<line x1="70" y1="285" x2="98" y2="285" stroke="#1f9d8f" stroke-width="3"/>
+<text x="104" y="290" fill="#232b38">短期線</text>
+<line x1="190" y1="285" x2="218" y2="285" stroke="#2a4068" stroke-width="3"/>
+<text x="224" y="290" fill="#232b38">長期線</text>
+</g>
+</svg>`,
+    },
     example:
       "上昇が続いていたV社株で、25日移動平均線が75日移動平均線を上から下に割り込みました。これがデッドクロスで、「短期の勢いが衰え下落トレンド入りの可能性」を示す売りシグナルです。2020年のコロナショックでは多くの銘柄・指数でデッドクロスが点灯しました。",
     points: [
@@ -508,6 +600,27 @@ const TERM_CONTENT = {
     ],
   },
   trend: {
+    figure: {
+      caption:
+        "株価の大きな流れは3種類。高値・安値を切り上げる上昇、切り下げる下降、方向感のない横ばい（レンジ）。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>トレンドの3つの型</title><desc>上昇トレンド・下降トレンド・横ばいを3つの小チャートで示した図</desc>
+<line x1="245" y1="45" x2="245" y2="225" stroke="#e2e6ed" stroke-width="1"/>
+<line x1="445" y1="45" x2="445" y2="225" stroke="#e2e6ed" stroke-width="1"/>
+<polyline fill="none" stroke="#2f9e44" stroke-width="3" stroke-linejoin="round" points="55,205 90,170 120,185 155,135 185,150 215,95"/>
+<polyline fill="none" stroke="#d24a4a" stroke-width="3" stroke-linejoin="round" points="260,95 295,135 325,120 360,170 390,155 420,205"/>
+<line x1="460" y1="112" x2="620" y2="112" stroke="#cdd4de" stroke-width="1" stroke-dasharray="5 4"/>
+<line x1="460" y1="163" x2="620" y2="163" stroke="#cdd4de" stroke-width="1" stroke-dasharray="5 4"/>
+<polyline fill="none" stroke="#5f6b7c" stroke-width="3" stroke-linejoin="round" points="460,160 495,115 525,160 555,115 585,160 615,115"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" text-anchor="middle">
+<text x="135" y="252" font-size="15" font-weight="700" fill="#2f9e44">上昇トレンド</text>
+<text x="135" y="273" font-size="12" fill="#5f6b7c">高値・安値を切り上げ</text>
+<text x="345" y="252" font-size="15" font-weight="700" fill="#d24a4a">下降トレンド</text>
+<text x="345" y="273" font-size="12" fill="#5f6b7c">高値・安値を切り下げ</text>
+<text x="540" y="252" font-size="15" font-weight="700" fill="#5f6b7c">横ばい（レンジ）</text>
+<text x="540" y="273" font-size="12" fill="#5f6b7c">方向感がない</text>
+</g>
+</svg>`,
+    },
     example:
       "高値と安値がともに切り上がっていれば上昇トレンド、切り下がっていれば下落トレンドです。たとえば安値が1,000円→1,100円→1,250円と切り上がるX社株は典型的な上昇トレンド。「トレンドは友達（Trend is your friend）」という米国の相場格言の通り、流れに沿った売買が基本とされます。",
     points: [
@@ -565,6 +678,21 @@ const TERM_CONTENT = {
     ],
   },
   "shiji-teikou": {
+    figure: {
+      caption:
+        "何度も下げ止まる支持線と、上値を抑える抵抗線。抜ける（ブレイク）と勢いづき、抜けた線は役割が逆転することも。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>支持線・抵抗線</title><desc>抵抗線と支持線の間で株価が往復し、最後に抵抗線を上抜け（ブレイクアウト）する様子</desc>
+<line x1="60" y1="95" x2="630" y2="95" stroke="#d24a4a" stroke-width="2" stroke-dasharray="7 5"/>
+<line x1="60" y1="235" x2="630" y2="235" stroke="#2f9e44" stroke-width="2" stroke-dasharray="7 5"/>
+<polyline fill="none" stroke="#5f6b7c" stroke-width="2.5" stroke-linejoin="round" points="60,235 110,150 150,98 210,185 260,233 320,150 360,98 420,180 470,233 520,150 560,98 600,140 630,60"/>
+<line x1="600" y1="50" x2="624" y2="74" stroke="#c2c9d4" stroke-width="1"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif">
+<text x="64" y="86" font-size="14" font-weight="700" fill="#d24a4a">抵抗線（上値を抑える）</text>
+<text x="64" y="256" font-size="14" font-weight="700" fill="#2f9e44">支持線（下げ止まる）</text>
+<text x="596" y="44" text-anchor="end" font-size="13" font-weight="700" fill="#167a6f">ブレイクアウト ↑</text>
+</g>
+</svg>`,
+    },
     example:
       "BB社株は過去3回、1,800円まで下がるたびに反発しています。この1,800円が支持線（サポートライン）です。逆に2,200円に近づくたびに売られて跳ね返されるなら、2,200円が抵抗線（レジスタンスライン）。多くの投資家が同じ価格を意識することで、実際にその価格帯で売買が増えます。",
     points: [
@@ -584,6 +712,31 @@ const TERM_CONTENT = {
     ],
   },
   rsi: {
+    figure: {
+      caption:
+        "0〜100で相場の過熱感を示す。70以上で買われすぎ、30以下で売られすぎ＝逆張りの目安。強いトレンド時は張り付くためレンジ相場向き。",
+      svg: `<svg viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg" class="figure-svg"><title>RSI</title><desc>0〜100で過熱感を示すRSI。70以上の買われすぎ帯と30以下の売られすぎ帯の間でRSI線が上下する図</desc>
+<rect x="130" y="50" width="490" height="60" fill="#f7e6e6"/>
+<rect x="130" y="190" width="490" height="60" fill="#e6f1e9"/>
+<line x1="130" y1="110" x2="620" y2="110" stroke="#d24a4a" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="130" y1="190" x2="620" y2="190" stroke="#2f9e44" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="130" y1="50" x2="130" y2="250" stroke="#cdd4de" stroke-width="1"/>
+<polyline fill="none" stroke="#1a2b4a" stroke-width="3" stroke-linejoin="round" points="130,150 175,118 215,90 260,135 310,165 355,200 395,210 440,170 485,128 525,92 565,150 620,178"/>
+<circle cx="215" cy="90" r="4" fill="#d24a4a"/>
+<circle cx="525" cy="92" r="4" fill="#d24a4a"/>
+<circle cx="395" cy="210" r="4" fill="#2f9e44"/>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="13" text-anchor="end">
+<text x="122" y="60" fill="#5f6b7c">100</text>
+<text x="122" y="114" fill="#d24a4a" font-weight="700">70</text>
+<text x="122" y="194" fill="#2f9e44" font-weight="700">30</text>
+<text x="122" y="252" fill="#5f6b7c">0</text>
+</g>
+<g font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+<text x="375" y="84" fill="#d24a4a">買われすぎ（70以上）</text>
+<text x="375" y="230" fill="#2f9e44">売られすぎ（30以下）</text>
+</g>
+</svg>`,
+    },
     example:
       "RSIは直近14日間の値動きから「買われすぎ・売られすぎ」を0〜100で示す指標です。CC社株のRSIが80なら買われすぎ圏で過熱気味、25なら売られすぎ圏で反発期待。レンジ相場で機能しやすく、「RSI30以下で買い、70以上で売り」が教科書的な使い方です。",
     points: [
