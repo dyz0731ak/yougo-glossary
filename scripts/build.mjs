@@ -10,6 +10,8 @@ const ROOT = join(__dirname, "..");
 
 const SITE_URL = "https://yougo.stock-overflow24.com";
 const SITE_NAME = "やさしい投資用語辞典";
+const OPERATOR_NAME = "STOCK OVERFLOW";
+const OPERATOR_PERSON = "Dすけ";
 const GA_VERIFICATION = "2lz7uCWIvf35c3KplsG0EgFgGOry0o3MfbD-lMHtYIg";
 const ADSENSE_CLIENT = "ca-pub-8504127793204920";
 const CONTACT_EMAIL = "info@stock-overflow24.com";
@@ -117,7 +119,7 @@ function footerHtml({ sisterLead } = {}) {
     ? `      <p class="sister-site">
         📊 ${sisterLead}
         <a href="https://dashboard.stock-overflow24.com/" rel="noopener">『投資の砦』</a>
-        へ。日本株・米国株を一画面で確認できます。
+        へ。日本株の急騰銘柄・決算・テーマ株を一画面で確認できます。
       </p>\n`
     : "";
   return `    <footer class="site-footer">
@@ -128,10 +130,12 @@ ${sister}      <nav class="footer-nav" aria-label="サイト情報">
         <a href="/contact/">お問い合わせ</a>
       </nav>
       <p class="footer-family">
-        姉妹サイト：<a href="https://stock-overflow24.com/" rel="noopener">投資の名著レビュー</a> ／
-        <a href="https://dashboard.stock-overflow24.com/" rel="noopener">投資の砦（市況ダッシュボード）</a>
+        ${esc(OPERATOR_NAME)}の運営サイト：<a href="https://stock-overflow24.com/" rel="noopener">迷える子羊たちの投資本ガイド</a> ／
+        <a href="https://dashboard.stock-overflow24.com/" rel="noopener">投資の砦</a> ／
+        <a href="https://blog.stock-overflow24.com/" rel="noopener">迷える子羊たちの株ノート</a>
       </p>
       <p>${esc(SITE_NAME)} — 投資初心者のための用語解説サイト</p>
+      <p class="footer-operator">運営：${esc(OPERATOR_NAME)}（${esc(OPERATOR_PERSON)}）</p>
       <p class="disclaimer">※本サイトは用語解説を目的としたもので、特定の銘柄や投資の推奨を行うものではありません。投資の最終判断はご自身の責任でお願いします。</p>
     </footer>`;
 }
@@ -345,7 +349,7 @@ ${relatedHtml}
       </article>
     </main>
 
-${footerHtml({ sisterLead: `${esc(t.term)}の値動きを実際に見るなら、ストップ高・急騰銘柄をリアルタイム監視できる` })}
+${footerHtml({ sisterLead: `${esc(t.term)}の値動きを実際に見るなら、ストップ高・急騰銘柄を定期更新で確認できる` })}
   </body>
 </html>
 `;
@@ -364,6 +368,16 @@ function renderIndexPage() {
     url: `${SITE_URL}/`,
     description,
     inLanguage: "ja",
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+
+  const organizationLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: OPERATOR_NAME,
+    url: "https://stock-overflow24.com/about/",
+    description: `個人投資家${OPERATOR_PERSON}が運営する投資情報サイト群の運営者。`,
   };
 
   const termSetLd = {
@@ -430,7 +444,7 @@ ${terms.map(card).join("\n")}
   return `<!DOCTYPE html>
 <html lang="ja">
   <head>
-${headHtml({ title, description, path: "/", ogType: "website", extraLd: [websiteLd, termSetLd] })}
+${headHtml({ title, description, path: "/", ogType: "website", extraLd: [organizationLd, websiteLd, termSetLd] })}
   </head>
   <body>
     <header class="site-header">
@@ -477,7 +491,7 @@ ${sections}
       </p>
     </main>
 
-${footerHtml({ sisterLead: "ストップ高・急騰銘柄のリアルタイム監視は、無料の市況ダッシュボード" })}
+${footerHtml({ sisterLead: "ストップ高・急騰銘柄・決算を定期更新で確認するなら、無料の日本株ダッシュボード" })}
 
     <script src="/app.js" defer></script>
   </body>
@@ -533,8 +547,8 @@ const aboutBody = `
         </section>
         <section class="static-section">
           <h2>運営者</h2>
-          <p>運営：迷える子羊たちの株ノート 編集部</p>
-          <p>個人投資家として日本株・米国株・投資信託の運用を実践しながら、投資の名著レビューサイト「<a href="https://stock-overflow24.com/" rel="noopener">迷える子羊たちの株ノート</a>」、市況ダッシュボード「<a href="https://dashboard.stock-overflow24.com/" rel="noopener">投資の砦</a>」、そして当サイトを運営しています。</p>
+          <p>運営：${esc(OPERATOR_NAME)}（${esc(OPERATOR_PERSON)}）</p>
+          <p>個人投資家として日本株・米国株・投資信託の運用を実践しながら、投資本専門サイト「<a href="https://stock-overflow24.com/" rel="noopener">迷える子羊たちの投資本ガイド</a>」、日本株ダッシュボード「<a href="https://dashboard.stock-overflow24.com/" rel="noopener">投資の砦</a>」、個人投資ブログ「<a href="https://blog.stock-overflow24.com/" rel="noopener">迷える子羊たちの株ノート</a>」、そして当サイトを運営しています。</p>
         </section>
         <section class="static-section">
           <h2>編集方針</h2>

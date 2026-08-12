@@ -938,6 +938,13 @@ mark {
   text-decoration: underline;
 }
 
+.footer-operator {
+  margin: 0.35rem 0 0;
+  color: #d6dcec;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 /* ===== 固定ページ（運営者情報・プライバシー等） ===== */
 .static-page .term-title {
   font-size: 1.65rem;
